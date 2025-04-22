@@ -34,12 +34,6 @@ class TwigBaseController extends BaseController {
     ];
     protected \Twig\Environment $twig; // ссылка на экземпляр twig, для рендернига
     
-    /*public function __construct($twig)
-    {
-        $this->twig = $twig; // пробрасываем его внутрь
-    }*/
-
-    // добавляем
     public function setTwig($twig) {
         $this->twig = $twig;
     }
@@ -58,8 +52,6 @@ class TwigBaseController extends BaseController {
         return $context;
     }
     
-    // функция гет, рендерит результат используя $template в качестве шаблона
-    // и вызывает функцию getContext для формирования словаря контекста
     public function get() {
         echo $this->twig->render($this->template, $this->getContext());
     }

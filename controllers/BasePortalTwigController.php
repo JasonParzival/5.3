@@ -1,6 +1,5 @@
 <?php
 class BasePortalTwigController extends TwigBaseController {
-    
     public function getContext(): array
     {
         $context = parent::getContext(); 

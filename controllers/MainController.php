@@ -5,7 +5,6 @@ class MainController extends BasePortalTwigController {
     public $template = "main.twig";
     public $title = "Главная";
     
-    // добавим метод getContext()
     public function getContext(): array
     {
         $context = parent::getContext();

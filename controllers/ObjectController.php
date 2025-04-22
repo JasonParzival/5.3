@@ -2,30 +2,35 @@
 require_once "BasePortalTwigController.php";
 
 class ObjectController extends BasePortalTwigController {
-    public $template = "main_window_object.twig"; // указываем шаблон
+    public $template = "";
+    public $temp = "";
+
+    public function get() {
+        $show = $_GET['show'] ?? '';
+        switch($show) {
+            case 'image':
+                $this->template = "base_image.twig";
+                $this->temp = "Картинка";
+                break;
+            case 'info':
+                $this->template = "base_info.twig";
+                $this->temp = "Описание";
+                break;
+            default:
+                $this->template = "main_window_object.twig";
+                $this->temp = "";
+        }
+        parent::get();
+    }
 
     public function getContext(): array
     {
-        $context = parent::getContext();  
-
-        // создам запрос, под параметр создаем переменную my_id в запросе
-        $query = $this->pdo->prepare("SELECT description, id FROM portal_characters WHERE id= :my_id");
-        // подвязываем значение в my_id 
-        $query->bindValue("my_id", $this->params['id']);
-        $query->execute(); // выполняем запрос
-
-        // тянем данные
-        $data = $query->fetch();
-
-        // передаем описание из БД в контекст
-        $context['description'] = $data['description'];
+        $context = parent::getContext();   
 
         $query = $this->pdo->prepare("SELECT * FROM portal_characters WHERE id= :my_id");
-        // подвязываем значение в my_id 
         $query->bindValue("my_id", $this->params['id']);
-        $query->execute(); // выполняем запрос
+        $query->execute(); 
         
-        // стягиваем данные через fetchAll() и сохраняем результат в контекст
         $context['title_objects'] = $query->fetch();
 
         return $context;

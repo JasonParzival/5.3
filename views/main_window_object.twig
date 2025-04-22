@@ -3,11 +3,11 @@
 
 {% block content %}
 <h1>{{ title_objects.title }}</h1>
-<div>{{ description }}</div>
+<div>{{ title_objects.description }}</div> 
 <div class="container">
         <ul class="nav nav-pills">
         {% for item in newnav %}
-            {{ macros.nav(item.title, "/portal-character/" ~ title_objects.id ~ "/" ~ item.url, temp == item.title) }}
+            {{ macros.nav(item.title, "/portal-character/" ~ title_objects.id ~ "?show=" ~ item.url, temp == item.title) }}
         {% endfor %}
         </ul>
 </div>
@@ -16,7 +16,7 @@
         <ul class="list-group">
                 <li class="list-group-item">
                     {% block dopcontent %}
-                        Выберите вверху информацию, которую хотите увидеть<br>
+                        Выберите вверху информацию, которую хотите увидеть<br>{{ age }}
                     {% endblock %}
                 </li>
         </ul>
