@@ -7,7 +7,7 @@
 <div class="container">
         <ul class="nav nav-pills">
         {% for item in newnav %}
-            {{ macros.nav(item.title, "/space-object/" ~ title_objects.id ~ "/" ~ item.url, temp == item.title) }}
+            {{ macros.nav(item.title, "/portal-character/" ~ title_objects.id ~ "/" ~ item.url, temp == item.title) }}
         {% endfor %}
         </ul>
 </div>

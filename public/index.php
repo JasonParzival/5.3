@@ -23,9 +23,9 @@
         $router = new Router($twig, $pdo);
         $router->add("/", MainController::class);
 
-        $router->add("/space-object/(?P<id>\d+)/image", ObjectImageController::class); 
-        $router->add("/space-object/(?P<id>\d+)/info", ObjectInfoController::class); 
-        $router->add("/space-object/(?P<id>\d+)", ObjectController::class); 
+        $router->add("/portal-character/(?P<id>\d+)/image", ObjectImageController::class); 
+        $router->add("/portal-character/(?P<id>\d+)/info", ObjectInfoController::class); 
+        $router->add("/portal-character/(?P<id>\d+)", ObjectController::class); 
         
 
         $router->get_or_default(Controller404::class);

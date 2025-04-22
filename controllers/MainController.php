@@ -12,10 +12,10 @@ class MainController extends TwigBaseController {
         
         // подготавливаем запрос SELECT * FROM space_objects
         // вообще звездочку не рекомендуется использовать, но на первый раз пойдет
-        $query = $this->pdo->query("SELECT * FROM space_objects");
+        $query = $this->pdo->query("SELECT * FROM portal_characters");
         
         // стягиваем данные через fetchAll() и сохраняем результат в контекст
-        $context['space_objects'] = $query->fetchAll();
+        $context['portal_characters'] = $query->fetchAll();
 
         return $context;
     }

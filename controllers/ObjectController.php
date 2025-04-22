@@ -8,7 +8,7 @@ class ObjectController extends TwigBaseController {
         $context = parent::getContext();  
 
         // создам запрос, под параметр создаем переменную my_id в запросе
-        $query = $this->pdo->prepare("SELECT description, id FROM space_objects WHERE id= :my_id");
+        $query = $this->pdo->prepare("SELECT description, id FROM portal_characters WHERE id= :my_id");
         // подвязываем значение в my_id 
         $query->bindValue("my_id", $this->params['id']);
         $query->execute(); // выполняем запрос
@@ -19,7 +19,7 @@ class ObjectController extends TwigBaseController {
         // передаем описание из БД в контекст
         $context['description'] = $data['description'];
 
-        $query = $this->pdo->prepare("SELECT * FROM space_objects WHERE id= :my_id");
+        $query = $this->pdo->prepare("SELECT * FROM portal_characters WHERE id= :my_id");
         // подвязываем значение в my_id 
         $query->bindValue("my_id", $this->params['id']);
         $query->execute(); // выполняем запрос

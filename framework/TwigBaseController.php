@@ -14,11 +14,11 @@ class TwigBaseController extends BaseController {
         ],
         [
             "title" => "Уитли",
-            "url" => "/space-object/1",
+            "url" => "/portal-character/1",
         ],
         [
             "title" => "ГЛэДОС",
-            "url" => "/space-object/2",
+            "url" => "/portal-character/2",
         ]
     ];
 

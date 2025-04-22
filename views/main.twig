@@ -7,7 +7,7 @@
         Вы на главной странице, этот сайт посвящён вселенной Portal.<br>
     </li>
     <div class="row">
-        {% for object in space_objects %}
+        {% for object in portal_characters %}
             {% include "_menu_item.twig" with {menu: object} %} 
         {% endfor %}
     </div>
