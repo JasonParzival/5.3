@@ -1,7 +1,7 @@
 <?php
-//require_once "TwigBaseController.php";
+require_once "BasePortalTwigController.php";
 
-class MainController extends TwigBaseController {
+class MainController extends BasePortalTwigController {
     public $template = "main.twig";
     public $title = "Главная";
     
@@ -10,11 +10,15 @@ class MainController extends TwigBaseController {
     {
         $context = parent::getContext();
         
-        // подготавливаем запрос SELECT * FROM space_objects
-        // вообще звездочку не рекомендуется использовать, но на первый раз пойдет
-        $query = $this->pdo->query("SELECT * FROM portal_characters");
+        if (isset($_GET['type'])) {
+            $query = $this->pdo->prepare("SELECT * FROM portal_characters WHERE type = :type");
+            $query->bindValue("type", $_GET['type']);
+            $query->execute();
+        }
+        else {
+            $query = $this->pdo->query("SELECT * FROM portal_characters");
+        }
         
-        // стягиваем данные через fetchAll() и сохраняем результат в контекст
         $context['portal_characters'] = $query->fetchAll();
 
         return $context;

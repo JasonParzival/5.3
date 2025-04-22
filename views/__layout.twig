@@ -19,16 +19,30 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        {% for item in nav %}
+                        <!--{% for item in nav %}
                             {{ macros.mainnav(item.title, item.url, title == item.title) }}
+                        {% endfor %}-->
+                        <!-- Оставил ссылку на главную -->
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Главная</a>
+                        </li>
+                            <!-- остальные заменил на цикл по типам -->
+                        {% for type in types %}
+                            <li class="nav-item">
+                                <!-- добавил href="/?type={{ type.type }}" -->
+                                <a class="nav-link" href="/?type={{ type.type }}">{{ type.type|title }}</a>
+                            </li>
                         {% endfor %}
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
-    {% block content %}
-        пустота
-    {% endblock %}
+    <div class="container">
+        {% block content %}
+            пустота
+        {% endblock %}
+    </div>
+    
 </body>
 </html>

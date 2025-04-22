@@ -1,6 +1,7 @@
 <?php
+require_once "BasePortalTwigController.php";
 
-class ObjectController extends TwigBaseController {
+class ObjectController extends BasePortalTwigController {
     public $template = "main_window_object.twig"; // указываем шаблон
 
     public function getContext(): array
